@@ -394,7 +394,172 @@ AeroShield's smart contracts are deployed on the **Flare Network Coston2 Testnet
 - **RPC URL**: `https://coston2-api.flare.network/ext/C/rpc`
 - **Chain ID**: `114`
 
-## �🙏 Acknowledgments
+## ❓ Frequently Asked Questions (FAQs)
+
+*"Insurance that pays before you leave the gate."*
+
+### 🔹 1. How does AeroShield actually work?
+
+Imagine you buy a ₹60 "delay cover" for your flight DEL → BOM.  
+➡️ If the flight is delayed **2+ hours**, AeroShield **automatically sends ₹1,000 to your wallet in <5 minutes** — no forms, no calls.
+
+✅ **Simple 4-step flow**:
+1. **Before your flight**, you pay a small amount (e.g., ₹50) to insure against delays (e.g., >2 hours).
+2. If your flight *is* delayed, **Flare's FDC (Data Connector)** checks a trusted flight API (like FlightStats) and **proves it on-chain** — no human needed.
+3. Once verified, the **smart contract instantly pays you** (e.g., ₹1,000) — usually in **under 5 minutes**.
+4. Money comes from a **shared pool** funded by all users' premiums (like a community safety net).
+
+> 🔍 *Think of it like a vending machine*: Insert coin (premium) → machine checks reality (FDC) → if condition met → dispenses reward (payout). No forms. No calls.
+
+---
+
+### 🔹 2. Do I need crypto or a wallet to use it?
+
+**No!** You can use your **XRP Ledger (XRPL) address** directly — like your email.
+- Just send a small XRP payment (e.g., ₹50 worth) with a note: *"Cover flight 6E-542"*.
+- AeroShield reads that note → creates your policy.
+- Payout comes to the same address — **no gas, no app, no signup needed**.
+
+Think of it like UPI: you use your VPA → money moves. Here, you use your XRPL address → insurance works.
+
+| Step | What You Do | Tech Behind It |
+|------|-------------|----------------|
+| 1. Sign up | Use phone/Gmail (via **Clerk**) | No wallet needed yet |
+| 2. Buy policy | Pay via **UPI → USDT** (via partner wallet) | On-ramp built-in |
+| 3. Claim | Done automatically — money goes to your wallet | Or to UPI if linked |
+| ✨ Bonus | Use your **XRPL address** → get **gasless transactions** on Flare | Thanks to **Flare Smart Accounts** |
+
+> 🇮🇳 A Delhi freelancer can buy coverage in 30 seconds — no "crypto jargon", no MetaMask popups.
+
+---
+
+### 🔹 3. Where does the payout money come from?
+
+From a **shared pool**, funded by *everyone who buys cover*.
+- 100 people pay ₹60 → ₹6,000 goes into the pool.
+- Only ~20–25 flights get delayed (based on real data) → 20–25 people get ₹1,000 each.
+- The rest of the money stays in the pool → used for next week's payouts.
+
+✅ **Three safety layers** keep payouts reliable:
+
+| Source | How It Works |
+|--------|--------------|
+| **1. Premium Pool** | Everyone who buys coverage adds to a shared fund. Most payouts come from here. |
+| **2. Collateral Backing** | Liquidity providers lock in extra funds (e.g., USDT, FXRP) as backup — verified by Flare's **FAssets + FTSO**. |
+| **3. Smart Pricing (AI)** | **Gemini-powered AI** adjusts premiums based on real risk (e.g., monsoon season = slightly higher price). This keeps the pool healthy. |
+
+> 📊 **Example**: 1,000 users × ₹60 = ₹60,000 in pool. Avg. delay rate = 20% → 200 claims × ₹300 = ₹60,000 → **Break-even & sustainable**.
+
+---
+
+### 🔹 4. What if too many flights are delayed (e.g., monsoon)? Will the pool run out?
+
+Great question! We prevent this in 3 ways:
+
+1️⃣ **Smart pricing**: AI adjusts premiums — high-risk days (e.g., heavy rain) cost a little more.  
+2️⃣ **Collateral backup**: Trusted partners lock extra money (e.g., USDT, FXRP) as safety net — watched by Flare's **FTSO** (price oracle).  
+3️⃣ **Payout limits**: Max ₹1,500 per flight → keeps pool sustainable.
+
+✅ **Yes — by design**:
+- **Over-collateralization**: The pool is always backed by **≥150% collateral** (e.g., ₹1.5L collateral for ₹1L coverage).
+- **Payout caps**: Max ₹2,000 per flight → avoids runaway claims.
+- **Rebalancing**: If risk rises, AI **automatically raises premiums** for new policies.
+- **FAssets help**: XRP community can deposit **FXRP** as low-volatility collateral.
+
+> 🔐 This is **more secure than traditional insurers**, who often *don't* pre-fund claims.
+
+---
+
+### 🔹 5. How do I (or anyone) make profit from this?
+
+✅ **Three ways to earn** — fair, transparent, open to all:
+
+| Role | How You Profit |
+|------|----------------|
+| **🛡️ User (Traveler)** | Profit = **Time + peace of mind**. Get compensated *fast* instead of losing income. |
+| **💧 Liquidity Provider (LP)** | Deposit stablecoins/FAssets into the pool → earn **yield + fees** (e.g., 5–10% APY), like in Aave or Compound. |
+| **🤖 Agent / Operator** | Run an FDC attestation node or help verify data → earn **FLR rewards** (like FTSO providers). |
+
+> 💡 Bonus: Early LPs can get **AeroShield tokens** (future airdrop) for bootstrapping the pool.
+
+---
+
+### 🔹 6. How does AeroShield make money?
+
+We take a tiny **5–10% fee** on every premium (e.g., ₹3 on a ₹60 policy).  
+This covers:
+- API costs (flight data)
+- Blockchain fees
+- AI (Gemini)
+- Team & growth
+
+💡 *No hidden fees. No commissions. No denial tricks.*
+
+If the pool has extra money (e.g., fewer delays), we may:
+- Lower future premiums
+- Share profits with liquidity providers
+- Add new covers (trains, buses, events)
+
+---
+
+### 🔹 7. Is my money safe? Can someone cheat the system?
+
+✅ **Yes, it's safe** — and here's why:
+- All money is in a **public smart contract** (anyone can check).
+- Payouts only happen if **Flare's FDC proves** the delay is real — no fake data.
+- If someone tries to lie (e.g., fake flight number), the proof fails → no payout.
+
+It's more transparent than your bank statement. 🔍
+
+---
+
+### 🔹 8. How is this different from normal travel insurance?
+
+| Traditional Insurance | AeroShield |
+|-----------------------|------------|
+| ❌ "We'll review your claim" (takes weeks) | ✅ **Auto-paid in minutes** — code doesn't lie |
+| ❌ Denials common ("fine print") | ✅ **Transparent rules** — if API says "delayed ≥2h", you get paid |
+| ❌ Middlemen (agents, call centers) | ✅ **Direct peer-to-pool** — lower cost, higher trust |
+| ❌ No real-time pricing | ✅ **AI adjusts price fairly** — safer flights = cheaper cover |
+
+> 🎯 **Bottom line**: AeroShield is *software*, not bureaucracy.
+
+---
+
+### 🔹 9. Who benefits most from AeroShield?
+
+| User | Benefit |
+|------|---------|
+| 🧑‍💼 **Freelancers / Gig workers** | Missed meeting = lost income. ₹1,000 in 5 mins = rebook & stay on track. |
+| 👨‍👩‍👧 **Families traveling** | Unexpected delay = hotel/food costs. Instant cash = peace of mind. |
+| 🌐 **Crypto/XRP users** | Use your XRPL address — no new wallet, no gas. |
+| 📱 **App partners (MakeMyTrip, etc.)** | Offer as add-on → earn referral fees + delight users. |
+
+---
+
+### 🔹 10. Is this live? Can I try it?
+
+✅ **Yes — on Flare Coston2 Testnet** (free to use):
+- Test with fake FLR (faucet available)
+- Simulate flight delays → see auto-payout
+- Demo AI prediction ("6E-542: 78% delay chance")
+
+➡️ **After hackathon**: Launch on **Flare Mainnet** → accept real USDT/FXRP → partner with travel apps.
+
+---
+
+### 🔹 11. What's next? Will it cover trains or buses?
+
+**Yes!** Phase 2:
+- 🚆 **Indian Railways delay cover** (using NTES API + FDC)
+- 🚌 **RedBus/IntrCity delays**
+- 🌾 **Farmers**: Get paid if drought hits (satellite + weather data)
+
+We start with flights — but AeroShield is really a **platform for real-world event insurance**.
+
+---
+
+## 🙏 Acknowledgments
 
 - [Flare Network](https://flare.network/) - For FDC and FTSO infrastructure
 - [Google Gemini](https://deepmind.google/technologies/gemini/) - AI prediction capabilities
