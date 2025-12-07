@@ -51,6 +51,9 @@ export function truncateAddress(address: string, startLength: number = 6, endLen
   return `${address.slice(0, startLength)}...${address.slice(-endLength)}`;
 }
 
+// Alias for truncateAddress
+export const shortenAddress = truncateAddress;
+
 export function getRiskTier(probability: number): {
   tier: string;
   color: string;
