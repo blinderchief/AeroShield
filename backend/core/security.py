@@ -80,12 +80,13 @@ async def verify_clerk_token(
                 detail="Unable to find appropriate key",
             )
         
-        # Verify the token
+        # Verify the token with leeway for clock skew
         payload = jwt.decode(
             token,
             rsa_key,
             algorithms=["RS256"],
             issuer=settings.CLERK_JWT_ISSUER,
+            leeway=60,  # Allow 60 seconds clock skew
             options={
                 "verify_aud": False,  # Clerk doesn't use standard audience
                 "verify_exp": True,

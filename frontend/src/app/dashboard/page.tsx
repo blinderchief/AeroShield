@@ -63,14 +63,18 @@ export default function DashboardPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [policiesRes, poolRes] = await Promise.all([
-          api.get("/policies"),
-          api.get("/pool/stats"),
-        ]);
+        // Try to fetch policies - may fail if user not registered in backend yet
+        const policiesRes = await api.get("/policies").catch(() => ({ data: [] }));
         setPolicies(policiesRes.data || []);
+        
+        // Try to fetch pool stats - may fail if no pool exists
+        const poolRes = await api.get("/pool/stats").catch(() => ({ data: null }));
         setPoolStats(poolRes.data);
       } catch (error) {
-        console.error("Failed to fetch data:", error);
+        // Silently handle errors - show empty state instead
+        console.warn("Dashboard data fetch failed (this is normal if backend is not running):", error);
+        setPolicies([]);
+        setPoolStats(null);
       } finally {
         setLoading(false);
       }
@@ -78,8 +82,11 @@ export default function DashboardPage() {
 
     if (isLoaded && user) {
       fetchData();
+    } else if (isLoaded && !user) {
+      // User not logged in, stop loading
+      setLoading(false);
     }
-  }, [isLoaded, user]);
+  }, [isLoaded, user, api]);
 
   const activePolicies = policies.filter((p) => p.status === "active");
   const pendingPolicies = policies.filter((p) => p.status === "pending");

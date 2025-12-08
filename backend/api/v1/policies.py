@@ -61,7 +61,7 @@ async def get_policy_quote(
     
     # Calculate premium based on risk
     base_rate = Decimal("0.02")  # 2% base
-    risk_multiplier = Decimal(str(1 + prediction.delay_probability))
+    risk_multiplier = Decimal(str(1 + prediction["delay_probability"]))
     
     premium = request.coverage_amount * base_rate * risk_multiplier
     premium = max(premium, Decimal("5.00"))  # Minimum $5
@@ -72,12 +72,12 @@ async def get_policy_quote(
         coverage_amount=request.coverage_amount,
         currency="USDT",
         delay_threshold_minutes=request.delay_threshold_minutes,
-        ai_risk_score=prediction.risk_score,
-        ai_delay_probability=prediction.delay_probability,
+        ai_risk_score=prediction["risk_score"],
+        ai_delay_probability=prediction["delay_probability"],
         risk_factors={
-            "factors": [f.model_dump() for f in prediction.risk_factors],
-            "weather": prediction.weather_summary,
-            "historical": prediction.historical_analysis,
+            "factors": prediction.get("risk_factors", []),
+            "weather": prediction.get("weather_summary", ""),
+            "historical": prediction.get("historical_analysis", ""),
         },
         suggested_premium=premium,
         valid_until=datetime.now(timezone.utc) + timedelta(hours=1),
@@ -118,7 +118,7 @@ async def buy_policy(
     
     # Calculate premium
     base_rate = Decimal("0.02")
-    risk_multiplier = Decimal(str(1 + prediction.delay_probability))
+    risk_multiplier = Decimal(str(1 + prediction["delay_probability"]))
     premium = policy_data.coverage_amount * base_rate * risk_multiplier
     premium = max(round(premium, 2), Decimal("5.00"))
     
@@ -139,12 +139,12 @@ async def buy_policy(
         premium_amount=premium,
         currency="USDT",
         delay_threshold_minutes=policy_data.delay_threshold_minutes,
-        ai_risk_score=prediction.risk_score,
-        ai_delay_probability=prediction.delay_probability,
+        ai_risk_score=prediction["risk_score"],
+        ai_delay_probability=prediction["delay_probability"],
         ai_risk_factors={
-            "factors": [f.model_dump() for f in prediction.risk_factors],
-            "weather": prediction.weather_summary,
-            "historical": prediction.historical_analysis,
+            "factors": prediction.get("risk_factors", []),
+            "weather": prediction.get("weather_summary", ""),
+            "historical": prediction.get("historical_analysis", ""),
         },
         payout_address=policy_data.payout_address or user.flare_address,
         coverage_start=policy_data.scheduled_departure - timedelta(hours=24),

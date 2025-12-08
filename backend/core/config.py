@@ -6,7 +6,7 @@ Centralized settings using Pydantic Settings
 from functools import lru_cache
 from typing import List, Union
 
-from pydantic import Field, computed_field
+from pydantic import AliasChoices, Field, computed_field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -76,7 +76,10 @@ class Settings(BaseSettings):
     OPERATOR_ADDRESS: str = ""
     
     # Google Gemini AI
-    GOOGLE_API_KEY: str = ""
+    GOOGLE_API_KEY: str = Field(
+        default="",
+        validation_alias=AliasChoices("GOOGLE_API_KEY", "GEMINI_API_KEY")
+    )
     GEMINI_MODEL: str = "gemini-1.5-flash"
     GEMINI_TEMPERATURE: float = 0.3
     GEMINI_MAX_TOKENS: int = 2048

@@ -1,10 +1,35 @@
-# AeroShield 🛡️✈️
+<div align="center">
 
-## AI-Augmented Parametric Travel Insurance on Flare Network
+<img src="docs/banner.svg" alt="AeroShield Banner" width="100%">
 
-AeroShield is a revolutionary decentralized flight insurance platform that combines the power of Flare Network's Data Connector (FDC), FTSO price oracles, and Google Gemini AI to deliver instant, transparent, and automatic claim payouts for flight delays and cancellations.
+<br/>
 
-![AeroShield Banner](docs/banner.png)
+<img src="docs/logo.svg" alt="AeroShield Logo" width="120">
+
+# AeroShield
+
+### 🛡️ AI-Augmented Parametric Travel Insurance on Flare Network ✈️
+
+[![Built on Flare](https://img.shields.io/badge/Built%20on-Flare%20Network-ff6b35?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTMgM0w0IDEzaDdsMi0xMHoiIGZpbGw9IndoaXRlIi8+PHBhdGggZD0iTTExIDIxbDktMTBoLTdsLTIgMTB6IiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg==)](https://flare.network/)
+[![Powered by Gemini](https://img.shields.io/badge/Powered%20by-Gemini%20AI-4285f4?style=for-the-badge&logo=google&logoColor=white)](https://deepmind.google/technologies/gemini/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=for-the-badge)](CONTRIBUTING.md)
+
+<p align="center">
+  <strong>🚀 Instant • 🤖 AI-Powered • 🔗 Trustless • 💰 Fair</strong>
+</p>
+
+<p align="center">
+  AeroShield is a revolutionary decentralized flight insurance platform that combines the power of Flare Network's Data Connector (FDC), FTSO price oracles, and Google Gemini AI to deliver instant, transparent, and automatic claim payouts for flight delays and cancellations.
+</p>
+
+<br/>
+
+[📖 Documentation](docs/README.md) • [🚀 Quick Start](QUICKSTART.md) • [🐛 Report Bug](https://github.com/aeroshield/issues) • [✨ Request Feature](https://github.com/aeroshield/issues)
+
+---
+
+</div>
 
 ## 🌟 Key Features
 
@@ -574,4 +599,12 @@ We start with flights — but AeroShield is really a **platform for real-world e
 
 ---
 
-Built with ❤️ for the Flare Network Hackathon
+<div align="center">
+
+<img src="docs/logo.svg" alt="AeroShield" width="60">
+
+**Built with ❤️ for the Flare Network Hackathon**
+
+<sub>© 2025 AeroShield. All rights reserved.</sub>
+
+</div>

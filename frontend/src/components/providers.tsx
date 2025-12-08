@@ -5,7 +5,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { WagmiProvider, createConfig, http } from "wagmi";
 import { defineChain } from "viem";
 import { RainbowKitProvider, darkTheme } from "@rainbow-me/rainbowkit";
-import { useState, type ReactNode } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import "@rainbow-me/rainbowkit/styles.css";
 
 // Define Flare Coston2 Testnet
@@ -53,6 +53,7 @@ const config = createConfig({
 });
 
 export function Providers({ children }: { children: ReactNode }) {
+  const [mounted, setMounted] = useState(false);
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -65,19 +66,28 @@ export function Providers({ children }: { children: ReactNode }) {
       })
   );
 
+  // Prevent hydration mismatch with RainbowKit
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider
-          theme={darkTheme({
-            accentColor: "#E8356D",
-            accentColorForeground: "white",
-            borderRadius: "large",
-            fontStack: "system",
-          })}
-        >
-          {children}
-        </RainbowKitProvider>
+        {mounted ? (
+          <RainbowKitProvider
+            theme={darkTheme({
+              accentColor: "#E8356D",
+              accentColorForeground: "white",
+              borderRadius: "large",
+              fontStack: "system",
+            })}
+          >
+            {children}
+          </RainbowKitProvider>
+        ) : (
+          children
+        )}
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </WagmiProvider>

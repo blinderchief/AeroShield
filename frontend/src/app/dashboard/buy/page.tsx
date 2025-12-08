@@ -18,7 +18,6 @@ import {
   CheckCircle,
   AlertTriangle,
 } from "lucide-react";
-import { DashboardLayout } from "@/components/layout/dashboard-layout";
 import { useApi } from "@/lib/api";
 
 interface RiskFactor {
@@ -139,10 +138,9 @@ export default function BuyPolicyPage() {
   };
 
   return (
-    <DashboardLayout>
-      <div className="max-w-4xl mx-auto">
-        {/* Progress Steps */}
-        <div className="flex items-center justify-center mb-8">
+    <div className="max-w-4xl mx-auto">
+      {/* Progress Steps */}
+      <div className="flex items-center justify-center mb-8">
           {[1, 2, 3].map((s) => (
             <div key={s} className="flex items-center">
               <div
@@ -527,6 +525,5 @@ export default function BuyPolicyPage() {
           )}
         </AnimatePresence>
       </div>
-    </DashboardLayout>
   );
 }
